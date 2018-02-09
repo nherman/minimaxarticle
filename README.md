@@ -1,4 +1,3 @@
-# minimaxarticle
+# minimax fork
 
-this repo is dedicated to writing a medium article titled: "How To Make Your Tic Tac Toe Game Unbeatable Using The Minimax Algorithm"
-for the freecodecamp community.
+Fork of https://github.com/ahmadabdolsaheb/minimaxarticle adapted learning purposes.
