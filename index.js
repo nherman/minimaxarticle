@@ -4,6 +4,7 @@ window.minmax = (function() {
   //define minmax API
   minmax.getMove = getMove;
   minmax.winning = winning;
+  minmax.winning_combo = winning_combo;
 
   return minmax;
 
@@ -104,21 +105,23 @@ window.minmax = (function() {
   }
 
   // winning combinations using the board indexies for instace the first win could be 3 xes in a row
-  function winning(board, player){
-   if (
-          (board[0] == player && board[1] == player && board[2] == player) ||
-          (board[3] == player && board[4] == player && board[5] == player) ||
-          (board[6] == player && board[7] == player && board[8] == player) ||
-          (board[0] == player && board[3] == player && board[6] == player) ||
-          (board[1] == player && board[4] == player && board[7] == player) ||
-          (board[2] == player && board[5] == player && board[8] == player) ||
-          (board[0] == player && board[4] == player && board[8] == player) ||
-          (board[2] == player && board[4] == player && board[6] == player)
-          ) {
-          return true;
-      } else {
-          return false;
-      }
+  function winning(board, player) {
+    var w = winning_combo(board, player);
+    return (w.length > 0);
+  }
+
+  function winning_combo(board, player){
+    var r = [];
+    if (board[0] == player && board[1] == player && board[2] == player) r = [0,1,2];
+    if (board[3] == player && board[4] == player && board[5] == player) r = [3,4,5];
+    if (board[6] == player && board[7] == player && board[8] == player) r = [6,7,8];
+    if (board[0] == player && board[3] == player && board[6] == player) r = [0,3,6];
+    if (board[1] == player && board[4] == player && board[7] == player) r = [1,4,7];
+    if (board[2] == player && board[5] == player && board[8] == player) r = [2,5,8];
+    if (board[0] == player && board[4] == player && board[8] == player) r = [0,4,8];
+    if (board[2] == player && board[4] == player && board[6] == player) r = [2,4,6];
+
+    return r;
   }
 
 })();
