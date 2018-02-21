@@ -1,11 +1,10 @@
-var minmax = {};
+'use strict';
 
-//define minmax API
-minmax.getMove = getMove;
-minmax.winning = winning;
-minmax.winning_combo = winning_combo;
-
-exports.minmaxtictactoe = minmax;
+module.exports.minimax = {
+  "getMove": getMove,
+  "winning": winning,
+  "winning_combo": winning_combo
+};
 
 function getMove(board, aiPlayer, huPlayer, options) {
   if (!Array.isArray(board)) throw new TypeError('Missing board Array', 'minmax.js');
